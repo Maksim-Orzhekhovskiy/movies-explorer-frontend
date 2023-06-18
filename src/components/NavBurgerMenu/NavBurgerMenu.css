@@ -70,6 +70,10 @@
   text-decoration: underline;
   text-underline-offset: 5px;
 }
+.burger__navigation-account-link {
+  text-decoration: none;
+  color: #000;
+}
 
 @media (max-width: 730px) {
   .burger__navigation {

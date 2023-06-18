@@ -2,29 +2,32 @@ import PropTypes from "prop-types";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 function MovieCardList({ movies, savedMoviesRoute }) {
-  const cardListClass = `card-list__wrapper ${
-    savedMoviesRoute && "card-list__wrapper_padding"
+  const cardListClass = `card-list__wrapper${
+    savedMoviesRoute ? " card-list__wrapper_padding" : ""
   }`;
-  const moreMoviesButtonClass = `card-list__more-button ${
-    savedMoviesRoute && "card-list__more-button_hidden"
+  const moreMoviesButtonClass = `card-list__more-button${
+    savedMoviesRoute ? " card-list__more-button_hidden" : ""
   }`;
   const moviesList = savedMoviesRoute
     ? movies.filter((movie) => movie.isSaved)
     : movies;
 
   return (
-    <section className={cardListClass}>
-      <ul className="card-list">
-        {moviesList.map((film) => (
-          <li className="card-list__card-wrapper" key={film.id}>
-            <MoviesCard movie={film} savedMoviesRoute={savedMoviesRoute} />
-          </li>
-        ))}
-      </ul>
+    <div className="card-list">
+      <div className={cardListClass}>
+        <ul className="card-list__list">
+          {moviesList.map((film) => (
+            <li className="card-list__card-wrapper" key={film.id}>
+              <MoviesCard movie={film} savedMoviesRoute={savedMoviesRoute} />
+            </li>
+          ))}
+        </ul>
+      </div>
       <button className={moreMoviesButtonClass}>Еще</button>
-    </section>
+    </div>
   );
 }
+
 
 MovieCardList.propTypes = {
   movies: PropTypes.arrayOf(

@@ -14,7 +14,6 @@ function Navigation({ isLoggedIn }) {
             <NavLink
               exact
               className="navigation__link navigation__link-movies"
-              activeClassName="navigation__link_active"
               to="/movies"
             >
               Фильмы
@@ -22,14 +21,14 @@ function Navigation({ isLoggedIn }) {
             <NavLink
               exact
               className="navigation__link navigation__link-movies"
-              activeClassName="navigation__link_active"
               to="/saved-movies"
             >
               Сохранённые фильмы
             </NavLink>
           </div>
-
-          <AccountButton />
+          <NavLink className="navigation__link" to="/profile">
+            <AccountButton />
+          </NavLink>
         </>
       ) : (
         <>

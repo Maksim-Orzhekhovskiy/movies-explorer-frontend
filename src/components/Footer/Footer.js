@@ -9,12 +9,17 @@ function Footer() {
       <div className="footer__info">
         <p className="footer__date">© 2023</p>
         <div className="footer__links">
-          <a href="https://practicum.yandex.ru/" className="footer__link">
+          <a
+            href="https://practicum.yandex.ru/"
+            className="footer__link"
+            target="_blank"
+          >
             Яндекс.Практикум
           </a>
           <a
             href="https://github.com/Maksim-Orzhekhovskiy"
             className="footer__link"
+            target="_blank"
           >
             GitHub
           </a>

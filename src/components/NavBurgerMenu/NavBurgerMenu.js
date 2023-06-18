@@ -26,7 +26,7 @@ function NavBurgerMenu({ isOpen, onClose, onOverlayClick }) {
               Сохраненные фильмы
             </NavLink>
           </div>
-          <NavLink to="/profile" className="burger__link" onClick={onClose}>
+          <NavLink to="/profile" className="burger__navigation-account-link" onClick={onClose}>
             <AccountButton />
           </NavLink>
         </nav>
