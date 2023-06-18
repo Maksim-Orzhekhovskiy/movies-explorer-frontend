@@ -1,0 +1,39 @@
+.auth-block {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+.auth-block__link-signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 76px;
+  height: 32px;
+  background-color: #000;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+.auth-block__link-signup {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #000;
+}
+
+@media (max-width: 730px) {
+  .auth-block {
+    gap: 14px;
+  }
+  .auth-block__link-signup {
+    font-size: 10px;
+  }
+  .auth-block__link-signin {
+    font-size: 10px;
+    height: 26px;
+  }
+}

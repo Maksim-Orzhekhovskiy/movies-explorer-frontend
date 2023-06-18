@@ -1,0 +1,29 @@
+.account-button {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+  height: 32px;
+  border-radius: 40px;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+  min-width: 100px;
+  gap: 7px;
+  justify-content: space-between;
+}
+.account-button__name {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 12px;
+  margin-left: 11px;
+}
+.account-button__icon {
+  background-image: url(../../images/icon-man.svg);
+  width: 26px;
+  height: 26px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f9f9f9;
+  border-radius: 50%;
+  margin-right: 3px;
+}

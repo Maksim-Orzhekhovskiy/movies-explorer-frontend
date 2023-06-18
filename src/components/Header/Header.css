@@ -1,0 +1,43 @@
+.header {
+  background-color: #f3c1f8;
+  height: 74px;
+}
+.header__content {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__logo {
+  padding: 18px 0;
+}
+.header__burger {
+  display: none;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  background-image: url(../../images/burger.svg);
+  background-size: contain;
+  height: 41px;
+  width: 41px;
+}
+
+@media (max-width: 1180px) {
+  .header__content {
+    max-width: 868px;
+  }
+}
+@media (max-width: 900px) {
+  .header__content {
+    max-width: 708px;
+  }
+  .header__burger {
+    display: block;
+  }
+}
+@media (max-width: 730px) {
+  .header__content {
+    max-width: 300px;
+  }
+}
