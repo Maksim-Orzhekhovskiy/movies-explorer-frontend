@@ -1,0 +1,33 @@
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.navigation__links {
+  margin-right: 364px;
+  display: flex;
+  gap: 20px;
+}
+
+.navigation__link {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #000;
+}
+
+.active {
+  font-weight: 500;
+}
+
+@media (max-width: 1180px) {
+  .navigation__links {
+    margin-right: 220px;
+  }
+}
+@media (max-width: 900px) {
+  .navigation {
+    display: none;
+  }
+}

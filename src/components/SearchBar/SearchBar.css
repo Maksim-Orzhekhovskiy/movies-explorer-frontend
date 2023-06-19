@@ -1,0 +1,129 @@
+.search-bar {
+  width: 100%;
+  margin: 80px auto 0;
+}
+.search-bar__underline {
+  height: 1px;
+  width: 100%;
+  background-color: #aaa;
+  margin: 83px 0 10px;
+}
+.search-bar__form {
+  gap: 41px;
+  display: flex;
+  width: 100%;
+}
+.search-bar__film {
+  max-width: 929px;
+  width: 100%;
+  border: 1.5px solid rgb(67%, 67%, 67%, 0.2);
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.search-bar__input {
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-left: 22px;
+  color: #000;
+}
+.search-bar__input::placeholder {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #a0a0a0;
+}
+.search-bar__submit {
+  width: 34px;
+  height: 34px;
+  background-image: url(../../images/black-arrow.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 48px;
+  margin-right: 7px;
+  cursor: pointer;
+  background-size: cover;
+  padding: 15px;
+}
+.search-bar__filter {
+  align-self: center;
+  border: none;
+  margin: 0;
+  min-width: 167px;
+  padding: 0;
+}
+.search-bar__checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.search-bar__checkbox-text {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+  cursor: pointer;
+}
+.search-bar__checkbox-text::before {
+  content: "";
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  background-color: #ebebeb;
+  border-radius: 20px;
+  height: 20px;
+  width: 36px;
+  right: -48px;
+}
+.search-bar__checkbox-text::after {
+  content: "";
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  background-color: #2be080;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  height: 14px;
+  right: -46px;
+  width: 14px;
+}
+
+@media (max-width: 1180px) {
+  .search-bar {
+    max-width: 868px;
+  }
+}
+@media (max-width: 900px) {
+  .search-bar__form {
+    flex-direction: column;
+    gap: 38px;
+  }
+  .search-bar {
+    margin-top: 60px;
+    max-width: 708px;
+  }
+  .search-bar__underline {
+    margin-top: 57px;
+  }
+}
+@media (max-width: 730px) {
+  .search-bar__underline {
+    margin-top: 44px;
+  }
+  .search-bar {
+    max-width: 300px;
+  }
+  .search-bar__form {
+    gap: 45px;
+  }
+  .search-bar__checkbox-text {
+    font-size: 11px;
+  }
+}

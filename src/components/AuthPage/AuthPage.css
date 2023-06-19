@@ -1,0 +1,124 @@
+.auth-page {
+  display: flex;
+  max-width: 396px;
+  justify-content: center;
+  margin: 0 auto;
+}
+.auth-page__content {
+  width: 100%;
+  padding: 70px 0;
+}
+.auth-page__head {
+  margin-bottom: 40px;
+}
+.auth-page__title {
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 500;
+  margin: 0;
+}
+.auth-page__logo {
+  margin-bottom: 40px;
+}
+.auth-page__input-wrapper {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+.auth-page__input-title {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 400;
+  color: #a0a0a0;
+}
+.auth-page__form {
+  margin-bottom: 16px;
+  display: flex;
+  gap: 91px;
+  flex-direction: column;
+}
+.auth-page__form_hight-gap {
+  gap: 179px;
+}
+.auth-page__button {
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  background-color: #000;
+  color: #fff;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+  height: 45px;
+  cursor: pointer;
+}
+.auth-page__input {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 400;
+  height: 46px;
+  margin-top: 10px;
+  padding-left: 15px;
+  box-sizing: border-box;
+  outline: none;
+}
+.auth-page__input-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.auth-page__link-container {
+  text-align: center;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  color: #a0a0a0;
+  margin: 16px 0 0;
+}
+.auth-page__link {
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .auth-page__content {
+    padding: 232px 0;
+  }
+}
+@media (max-width: 450px) {
+  .auth-page__content {
+    padding: 56px 30px 30px;
+  }
+  .auth-page__title {
+    text-align: center;
+  }
+  .logo-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .auth-page__head {
+    margin-bottom: 80px;
+  }
+  .auth-page__link-container {
+    margin: 14px 0 0;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .auth-page__link {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}

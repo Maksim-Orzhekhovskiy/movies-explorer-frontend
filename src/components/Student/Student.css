@@ -1,0 +1,24 @@
+.student {
+  max-width: 1140px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 101px;
+}
+@media (max-width: 1180px) {
+  .student {
+    max-width: 868px;
+  }
+}
+@media (max-width: 900px) {
+  .student {
+    max-width: 708px;
+    gap: 90px;
+  }
+}
+@media (max-width: 730px) {
+  .student {
+    max-width: 292px;
+    gap: 70px;
+  }
+}
