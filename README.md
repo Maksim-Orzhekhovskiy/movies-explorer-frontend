@@ -3,6 +3,8 @@
 
 [Ссылка на MR](https://github.com/Maksim-Orzhekhovskiy/movies-explorer-frontend/pull/2)
 
+[Ссылка на проект](http://diploma.films.nomoredomains.rocks)
+
 [Ссылка на макет](https://disk.yandex.ru/d/hqKTEkyCRd4eVQ)
 
 **Как запустить проект**
