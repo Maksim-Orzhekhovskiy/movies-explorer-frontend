@@ -1,10 +1,20 @@
-import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { BEATFILM_MOVIES_URL } from "../../utils/constants";
 
-function MovieCard({ movie, savedMoviesRoute }) {
-  const { image, name, duration, isSaved } = movie;
+function MovieCard({
+  movie,
+  savedMoviesRoute,
+  onSaveMovie,
+  onDeleteMovie,
+  savedMovies,
+}) {
+  const { image, nameRU, duration } = movie;
 
-  const [inSaved, setInSaved] = useState(isSaved);
+  const [isSaved, setIsSaved] = useState(
+    savedMoviesRoute
+      ? true
+      : savedMovies.some((savedMovie) => savedMovie.movieId === movie.id)
+  );
 
   function convertor(min) {
     const hours = Math.floor(min / 60);
@@ -13,26 +23,49 @@ function MovieCard({ movie, savedMoviesRoute }) {
   }
 
   const cardLikeClass = `card__saved-button ${
-    inSaved && "card__saved-button_active"
+    isSaved && "card__saved-button_active"
   }`;
 
-  function handleLike() {
-    setInSaved(!inSaved);
+  useEffect(() => {
+    setIsSaved(
+      savedMovies?.some((savedMovie) => savedMovie.movieId === movie.id)
+    );
+  }, [movie, savedMovies]);
+
+  function handleSaveMovie() {
+    onSaveMovie(movie, isSaved, setIsSaved);
+  }
+
+  function handleDeleteMovie() {
+    onDeleteMovie(movie);
   }
 
   return (
     <article className="card">
-      <img className="card__image" src={image} alt="обложка фильма" />
+      <a href={movie.trailerLink} target="_blank" rel="noopener noreferrer">
+        <img
+          className="card__image"
+          src={
+            savedMoviesRoute
+              ? `${image}`
+              : `${BEATFILM_MOVIES_URL}${movie.image.url}`
+          }
+          alt="обложка фильма"
+        />
+      </a>
       <div className="card__caption">
         <div className="card__title-wrapper">
-          <h3 className="card__title">{name}</h3>
+          <h3 className="card__title">{nameRU}</h3>
           {savedMoviesRoute ? (
             <button
               className="card__saved-button card__delete-button"
-              onClick={handleLike}
+              onClick={handleDeleteMovie}
             />
           ) : (
-            <button className={cardLikeClass} onClick={handleLike} />
+            <button
+              className={cardLikeClass}
+              onClick={isSaved ? handleDeleteMovie : handleSaveMovie}
+            />
           )}
         </div>
         <p className="card__duration">{convertor(duration)}</p>
@@ -40,16 +73,5 @@ function MovieCard({ movie, savedMoviesRoute }) {
     </article>
   );
 }
-
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    duration: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    isSaved: PropTypes.bool.isRequired,
-  }),
-  savedMoviesRoute: PropTypes.bool.isRequired,
-};
 
 export default MovieCard;

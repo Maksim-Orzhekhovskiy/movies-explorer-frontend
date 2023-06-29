@@ -1,4 +1,5 @@
 import me from "../../images/me.jpg";
+
 function AboutMe() {
   return (
     <section className="about-me" id="about-me">
@@ -16,8 +17,10 @@ function AboutMe() {
             как прошёл курс по веб-разработке, нашел себе работу в IT.
           </p>
           <a
+            rel="noopener noreferrer"
             href="https://github.com/Maksim-Orzhekhovskiy"
             className="about-me__github"
+            target="_blank"
           >
             Github
           </a>

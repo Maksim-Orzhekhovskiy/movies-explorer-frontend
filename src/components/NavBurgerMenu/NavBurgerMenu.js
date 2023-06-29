@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import PropTypes from "prop-types";
 import AccountButton from "../AccountButton/AccountButton";
 
 function NavBurgerMenu({ isOpen, onClose, onOverlayClick }) {
@@ -26,7 +25,11 @@ function NavBurgerMenu({ isOpen, onClose, onOverlayClick }) {
               Сохраненные фильмы
             </NavLink>
           </div>
-          <NavLink to="/profile" className="burger__navigation-account-link" onClick={onClose}>
+          <NavLink
+            to="/profile"
+            className="burger__navigation-account-link"
+            onClick={onClose}
+          >
             <AccountButton />
           </NavLink>
         </nav>
@@ -34,11 +37,5 @@ function NavBurgerMenu({ isOpen, onClose, onOverlayClick }) {
     </div>
   );
 }
-
-NavBurgerMenu.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onOverlayClick: PropTypes.func.isRequired,
-};
 
 export default NavBurgerMenu;

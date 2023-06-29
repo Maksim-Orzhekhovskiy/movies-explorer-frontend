@@ -27,7 +27,7 @@
   }
 }
 @media (max-width: 900px) {
-  .navigation {
+  .navigation-movies {
     display: none;
   }
 }

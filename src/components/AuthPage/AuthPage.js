@@ -1,8 +1,16 @@
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { INPUT_OPTIONS } from "../../utils/constants";
 
-function AuthPage({ isLoginPage, staticContent }) {
+function AuthPage({
+  isLoginPage,
+  staticContent,
+  onSubmit,
+  submitError,
+  isFormDisabled,
+}) {
   const logoClassName = "auth-page__logo";
   const {
     greeting,
@@ -17,6 +25,43 @@ function AuthPage({ isLoginPage, staticContent }) {
     redirectLink,
   } = staticContent;
 
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isDirty, isValid },
+  } = useForm({ mode: "onChange" });
+
+  function onSubmitForm() {
+    const { name, email, password } = userData;
+
+    if (!isLoginPage) {
+      onSubmit(email, password, name);
+      setUserData({
+        name: "",
+        email: "",
+        password: "",
+      });
+    }
+
+    if (isLoginPage) {
+      onSubmit(email, password);
+    }
+  }
+
   return (
     <main className="auth-page">
       <div className="auth-page__content">
@@ -28,6 +73,7 @@ function AuthPage({ isLoginPage, staticContent }) {
           className={`auth-page__form ${
             isLoginPage && "auth-page__form_hight-gap"
           }`}
+          onSubmit={handleSubmit(onSubmitForm)}
         >
           <div className="auth-page__input-list">
             {!isLoginPage && (
@@ -38,8 +84,19 @@ function AuthPage({ isLoginPage, staticContent }) {
                     type="text"
                     className="auth-page__input"
                     placeholder={namePlaceholder}
+                    {...register("name", {
+                      ...INPUT_OPTIONS.name,
+                      onChange: handleChange,
+                    })}
+                    value={userData.name || ""}
+                    required
+                    minLength={2}
+                    maxLength={30}
+                    name="name"
                   />
-                  <span></span>
+                  <span className="auth-page__error">
+                    {errors.name ? errors.name.message : ""}
+                  </span>
                 </label>
               </fieldset>
             )}
@@ -50,8 +107,17 @@ function AuthPage({ isLoginPage, staticContent }) {
                   type="email"
                   className="auth-page__input"
                   placeholder={emailPlaceholder}
+                  {...register("email", {
+                    ...INPUT_OPTIONS.email,
+                    onChange: handleChange,
+                  })}
+                  value={userData.email || ""}
+                  required
+                  name="email"
                 />
-                <span></span>
+                <span className="auth-page__error">
+                  {errors.email ? errors.email.message : ""}
+                </span>
               </label>
             </fieldset>
             <fieldset className="auth-page__input-wrapper">
@@ -59,14 +125,33 @@ function AuthPage({ isLoginPage, staticContent }) {
                 {passwordLabel}
                 <input
                   type="password"
-                  className="auth-page__input"
+                  className={`auth-page__input ${
+                    submitError && "auth-page__input_red"
+                  }}`}
                   placeholder={passwordPlaceholder}
+                  {...register("password", {
+                    ...INPUT_OPTIONS.password,
+                    onChange: handleChange,
+                  })}
+                  value={userData.password || ""}
+                  required
+                  minLength={6}
+                  name="password"
                 />
-                <span></span>
+                <span className="auth-page__error">
+                  {errors.password ? errors.password.message : ""}
+                </span>
               </label>
             </fieldset>
           </div>
-          <button type="submit" className="auth-page__button">
+          <button
+            type="submit"
+            className={`auth-page__button ${
+              (!isValid || !isDirty || isFormDisabled) &&
+              "auth-page__button_disabled"
+            }`}
+            disabled={!isValid || !isDirty || isFormDisabled}
+          >
             {submitBtn}
           </button>
         </form>
@@ -83,22 +168,5 @@ function AuthPage({ isLoginPage, staticContent }) {
     </main>
   );
 }
-
-AuthPage.propTypes = {
-  staticContent: PropTypes.shape({
-    greeting: PropTypes.string.isRequired,
-    nameLabel: PropTypes.string,
-    namePlaceholder: PropTypes.string,
-    emailLabel: PropTypes.string.isRequired,
-    emailPlaceholder: PropTypes.string.isRequired,
-    passwordLabel: PropTypes.string.isRequired,
-    passwordPlaceholder: PropTypes.string.isRequired,
-    defaultError: PropTypes.string,
-    submitBtn: PropTypes.string.isRequired,
-    redirectPrompt: PropTypes.string.isRequired,
-    redirectLink: PropTypes.string.isRequired,
-  }),
-  isRegisterPage: PropTypes.bool.isRequired,
-};
 
 export default AuthPage;
