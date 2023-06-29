@@ -12,11 +12,11 @@ function renderResponse(res) {
 
 function authorizeUser(email, password) {
   return fetch(`${BASE_URL}${SIGNIN_ENDPOINT}`, {
-    credentials: "include",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify({ email, password }),
   }).then(renderResponse);
 }
@@ -27,8 +27,8 @@ function registerUser(email, password, name) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password, name }),
     credentials: "include",
+    body: JSON.stringify({ email, password, name }),
   }).then(renderResponse);
 }
 
@@ -44,8 +44,8 @@ function logoutUser() {
 
 function checkAuth() {
   return fetch(`${BASE_URL}/users/me`, {
-    credentials: "include",
     method: "GET",
+    credentials: "include",
   }).then(renderResponse);
 }
 
@@ -55,8 +55,8 @@ function editUserProfile(name, email) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, email }),
     credentials: "include",
+    body: JSON.stringify({ name, email }),
   }).then(renderResponse);
 }
 
