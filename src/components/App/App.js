@@ -160,14 +160,14 @@ function App() {
   useEffect(() => {
     setSearchError("");
 
-    if (isShortsChecked && storedMovies.length !== 0) {
+    if (isShortsChecked && storedMovies && storedMovies.length !== 0) {
       const shorts = filterObjectsByThreshold(filteredMovies, "duration", 40);
       setFilteredMovies(shorts);
 
       if (shorts.length === 0) {
         setSearchError("По вашему запросу совпадений не найдено");
       }
-    } else if (!isShortsChecked && storedMovies.length !== 0) {
+    } else if (!isShortsChecked && storedMovies && storedMovies.length !== 0) {
       handleSearch(storedKeyword);
     }
   }, [isShortsChecked]);
@@ -175,7 +175,7 @@ function App() {
   useEffect(() => {
     setSearchSavedError("");
 
-    if (isSavedShortsChecked && savedMovies.length !== 0) {
+    if (isSavedShortsChecked && savedMovies && savedMovies.length !== 0) {
       const savedShorts = filterObjectsByThreshold(savedMovies, "duration", 40);
       setPreviousSavedMovies(savedMovies);
       setFilteredSavedMovies(savedShorts);
