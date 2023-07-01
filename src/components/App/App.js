@@ -74,6 +74,16 @@ function App() {
     }
   }, [isLoggedIn]);
 
+
+  useEffect(() => {
+    localStorage.setItem("shortsMoviesChecked", JSON.stringify(isShortsChecked));
+  }, [isShortsChecked]);
+
+  useEffect(() => {
+    const storedShortsMoviesChecked = JSON.parse(localStorage.getItem("shortsMoviesChecked"));
+    setIsShortsChecked(storedShortsMoviesChecked || false);
+  }, []);
+
   function showSearchInputError() {
     if (location.pathname === "/movies") {
       setSearchError("Пожалуйста, введите ключевое слово поиска");
@@ -91,10 +101,7 @@ function App() {
       getMovies()
         .then((movies) => {
           setInitialMovies(movies);
-          let filtered = filterArray(movies, filterKeyword, [
-            "nameRU",
-            "nameEN",
-          ]);
+          let filtered = filterArray(movies, filterKeyword, ["nameRU", "nameEN"]);
 
           if (isShortsChecked) {
             filtered = filterObjectsByThreshold(filtered, "duration", 40);
@@ -113,10 +120,7 @@ function App() {
         )
         .finally(() => setIsSearchLoading(false));
     } else {
-      let filtered = filterArray(initialMovies, filterKeyword, [
-        "nameRU",
-        "nameEN",
-      ]);
+      let filtered = filterArray(initialMovies, filterKeyword, ["nameRU", "nameEN"]);
 
       if (isShortsChecked) {
         filtered = filterObjectsByThreshold(filtered, "duration", 40);
