@@ -57,6 +57,7 @@
   font-weight: 500;
   height: 45px;
   cursor: pointer;
+  pointer-events: all;
 }
 .auth-page__input {
   background-color: #f9f9f9;
@@ -71,6 +72,9 @@
   padding-left: 15px;
   box-sizing: border-box;
   outline: none;
+}
+.auth-page__input_red::placeholder {
+  background-color:#FF4062;;
 }
 .auth-page__input-list {
   display: flex;
@@ -91,6 +95,16 @@
   font-size: 14px;
   line-height: 17px;
   font-weight: 400;
+}
+.auth-page__error {
+  color: #FF4062;
+  font-size: 13px;
+  font-weight: 400;
+  padding-top: 10px;
+}
+.auth-page__button_disabled {
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 @media (max-width: 900px) {

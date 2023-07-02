@@ -1,12 +1,34 @@
-import SearchForm from "../SearchBar/SearchBar";
 import MovieCardList from "../MoviesCardList/MoviesCardList";
-import movieExampleCards from "../../utils/movieExampleCards";
+import SearchBar from "../SearchBar/SearchBar";
 
-function SavedMovies() {
+function SavedMovies({
+  filteredMovies,
+  savedMovies,
+  onDeleteMovie,
+  onSubmit,
+  isShortsChecked,
+  onShortsCheck,
+  searchError,
+  onNoInput,
+  filteredSavedMovies,
+}) {
   return (
     <main className="saved-movies">
-      <SearchForm />
-      <MovieCardList movies={movieExampleCards} savedMoviesRoute={true} />
+      <SearchBar
+        savedMoviesRoute={true}
+        isShortsChecked={isShortsChecked}
+        onSubmit={onSubmit}
+        onShortsCheck={onShortsCheck}
+        onNoInput={onNoInput}
+      />
+      <MovieCardList
+        filteredMovies={filteredMovies}
+        filteredSavedMovies={filteredSavedMovies}
+        searchError={searchError}
+        savedMovies={savedMovies}
+        savedMoviesRoute={true}
+        onDeleteMovie={onDeleteMovie}
+      />
     </main>
   );
 }

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import PropTypes from "prop-types";
 import Navigation from "../Navigation/Navigation";
 import Logo from "../Logo/Logo";
 import NavBurgerMenu from "../NavBurgerMenu/NavBurgerMenu";
@@ -55,9 +54,5 @@ function Header({ isLoggedIn }) {
     </header>
   );
 }
-
-Header.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
-};
 
 export default Header;
